@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addDoc, collection } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth, dbStore } from '../../config/firebase';
 
 interface CreateFormData {
@@ -28,6 +29,7 @@ function CreateForm() {
   });
 
   const postsRef = collection(dbStore, 'posts');
+  const navigate = useNavigate();
 
   const onCreatePost = async (data: CreateFormData) => {
     await addDoc(postsRef, {
@@ -36,7 +38,11 @@ function CreateForm() {
       username: user?.displayName,
       userId: user?.uid,
     });
+
+    // return to home after submitting post
+    navigate('/');
   };
+
   return (
     <form onSubmit={handleSubmit(onCreatePost)}>
       <input type="text" placeholder="Post Title" {...register('title')} />
