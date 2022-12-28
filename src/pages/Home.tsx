@@ -1,14 +1,15 @@
 import { getDocs, collection } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { dbStore } from '../config/firebase';
+// eslint-disable-next-line import/no-cycle
 import Post from './Post';
 
-interface UserPost {
+export interface UserPost {
   id: string;
   userId: string;
   title: string;
   username: string;
-  descriptiong: string;
+  description: string;
 }
 
 function Home() {
@@ -27,7 +28,8 @@ function Home() {
   return (
     <div>
       {postsList?.map((post) => (
-        <Post key="key" />
+        // eslint-disable-next-line react/jsx-key
+        <Post post={post} />
       ))}
     </div>
   );
