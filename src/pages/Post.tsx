@@ -19,6 +19,7 @@ interface Props {
 }
 
 interface Like {
+  likeId: string;
   userId: string;
 }
 
@@ -32,17 +33,27 @@ function Post(props: Props) {
   const queryLike = query(likesRef, where('postId', '==', post.id));
   const getLikes = async () => {
     const data = await getDocs(queryLike);
-    setLikes(data.docs.map((userDoc) => ({ userId: userDoc.data().userId })));
+    setLikes(
+      data.docs.map((userDoc) => ({
+        userId: userDoc.data().userId,
+        likeId: userDoc.id,
+      }))
+    );
   };
 
   // TODO: make a new like function
   // get user who like the post
   const addLike = async () => {
     try {
-      await addDoc(likesRef, { userId: user?.uid, postId: post.id });
+      const newDoc = await addDoc(likesRef, {
+        userId: user?.uid,
+        postId: post.id,
+      });
       if (user) {
         setLikes((prev) =>
-          prev ? [...prev, { userId: user.uid }] : [{ userId: user.uid }]
+          prev
+            ? [...prev, { userId: user.uid, likeId: newDoc.id }]
+            : [{ userId: user.uid, likeId: newDoc.id }]
         );
       }
     } catch (error) {
@@ -59,13 +70,14 @@ function Post(props: Props) {
         where('userId', '==', user?.uid)
       );
       const unlikeData = await getDocs(queryUnlike);
-      const unlike = doc(dbStore, 'likes', unlikeData.docs[0].id);
+      const likeId = unlikeData.docs[0].id;
+      const unlike = doc(dbStore, 'likes', likeId);
       await deleteDoc(unlike);
-      // if (user) {
-      //   setLikes((prev) =>
-      //     prev ? [...prev, { userId: user.uid }] : [{ userId: user.uid }]
-      //   );
-      // }
+      if (user) {
+        setLikes(
+          (prev) => prev && prev.filter((like) => like.likeId !== likeId)
+        );
+      }
     } catch (error) {
       console.log(error);
     }
