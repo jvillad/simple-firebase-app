@@ -10,7 +10,6 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useRevalidator } from 'react-router-dom';
 import { auth, dbStore } from '../config/firebase';
 import { UserPost as IPost } from './Home';
 
@@ -57,7 +56,7 @@ function Post(props: Props) {
         );
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -79,7 +78,7 @@ function Post(props: Props) {
         );
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -87,6 +86,7 @@ function Post(props: Props) {
 
   useEffect(() => {
     getLikes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
