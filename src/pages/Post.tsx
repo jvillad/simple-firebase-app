@@ -98,11 +98,19 @@ function Post(props: Props) {
         <p>{post.description}</p>
       </div>
       <div className="footer-post">
-        <p>@{post.username}</p>
-        <button type="button" onClick={hasUserLiked ? removeLike : addLike}>
+        <p className="footer-uname">@{post.username}</p>
+        <button
+          className="like-btn"
+          type="button"
+          onClick={hasUserLiked ? removeLike : addLike}
+        >
           {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}
         </button>
-        {likes && <p>Likes: {likes.length}</p>}
+        {likes?.length === 0 ? (
+          <p>{}</p>
+        ) : (
+          likes && <p>Likes: {likes.length}</p>
+        )}
       </div>
     </div>
   );
