@@ -9,11 +9,10 @@ function Login() {
     navigate('/');
   };
   return (
-    <div>
+    <div className="login-page">
       <p>Sign in with google to continue. </p>
       <button type="button" onClick={signInWithGoogle}>
-        {' '}
-        Log In{' '}
+        Log in
       </button>
     </div>
   );

@@ -90,11 +90,11 @@ function Post(props: Props) {
   }, []);
 
   return (
-    <div>
-      <div className="title">
+    <div className="post-container">
+      <div className="title-post">
         <h2>{post.title}</h2>
       </div>
-      <div className="body">
+      <div className="body-post">
         <p>{post.description}</p>
       </div>
       <div className="footer-post">
