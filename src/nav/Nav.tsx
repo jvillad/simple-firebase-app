@@ -13,14 +13,13 @@ function Nav() {
 
   return (
     <div className="nav-container">
-      {/* <div className="nav"> */}
       <Link to="/"> Home </Link>
       {!user ? (
         <Link to="/login"> Login </Link>
       ) : (
         <Link to="/createpost"> Create Post </Link>
       )}
-      {/* </div> */}
+
       <div className="user">
         {/* if user exist display name and photo */}
         {user && (
@@ -31,7 +30,7 @@ function Nav() {
               width={200}
               height={200}
             />
-            <span>{user?.displayName}</span>
+            <span className="display-name">{user?.displayName}</span>
           </>
         )}
       </div>
