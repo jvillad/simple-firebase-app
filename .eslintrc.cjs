@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'react-hooks/exhaustive-deps': 'warn',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
   },
 };
