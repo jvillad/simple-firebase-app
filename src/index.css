@@ -1,13 +1,15 @@
 :root {
   --black: #0a0a0a;
-  --secondblack: #171321;
+  --richblack: #011627;
   --hotmag: #ff17e4;
   --cream: #f1f7ed;
   --yellow: #faa916;
+  --secondyellow: #ff9f1c;
   --maroon: #b33951;
   --red: #eb5160;
-  --grey: #5b5a5d;
-  --green: #00ff00;
+  --grey: #bac1c0;
+  --springreen: #04724d;
+  --ghostwhite: #fdfffc;
   --font-size: 1.3rem;
   --space: 'Space Mono', monospace;
   --roboto: 'Roboto', sans-serif;
@@ -18,7 +20,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: var(--ghostwhite);
 }
 
 body {
@@ -30,12 +32,14 @@ body {
   font-size: 30px;
   display: flex;
   justify-content: space-evenly;
+  background-color: var(--richblack);
 }
 
 .user {
   display: flex;
   vertical-align: middle;
-  gap: 20px;
+  gap: 10px;
+  background-color: var(--richblack);
 }
 
 .user img {
@@ -44,16 +48,24 @@ body {
   height: 46px;
 }
 
-span {
-  color: var(--red);
+span.display-name {
+  color: var(--ghostwhite);
+  background-color: var(--richblack);
 }
 
 .nav-container a {
   text-decoration: none;
+  color: var(--ghostwhite);
+  background-color: var(--richblack);
 }
 
-.nav a:hover {
+a:hover {
   cursor: pointer;
+  color: var(--secondyellow);
+}
+
+div.logout-btn {
+  background-color: var(--richblack);
 }
 
 .logout-btn button {
@@ -97,6 +109,20 @@ span {
 
 .body-post {
   font-size: 24px;
+}
+
+.footer-uname {
+  color: var(--grey);
+  font-weight: bold;
+}
+
+.footer-post button {
+  font-size: 28px;
+  border-radius: 5px;
+}
+.footer-post button:hover {
+  cursor: pointer;
+  background-color: var(--grey);
 }
 
 button {
