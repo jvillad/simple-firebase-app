@@ -24,7 +24,6 @@ interface Like {
 
 function Post(props: Props) {
   const { post } = props;
-
   // TODO: separate func to easily track errors/debug
   const [likes, setLikes] = useState<Like[] | null>(null);
   const [user] = useAuthState(auth);
@@ -56,7 +55,7 @@ function Post(props: Props) {
         );
       }
     } catch (error) {
-      // console.log(error);
+      console.error(error);
     }
   };
 
@@ -78,7 +77,7 @@ function Post(props: Props) {
         );
       }
     } catch (error) {
-      // console.log(error);
+      console.error(error);
     }
   };
 
