@@ -44,17 +44,26 @@ function CreateForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onCreatePost)} className="form-post">
-      <div className="form-title">
-        <input type="text" placeholder="Post Title" {...register('title')} />
+    <form className="create-post" onSubmit={handleSubmit(onCreatePost)}>
+      <div>
+        <input
+          className="form-title"
+          type="text"
+          placeholder="Post Title"
+          {...register('title')}
+        />
       </div>
       <p style={{ color: 'red' }}>{errors.title?.message}</p>
-      <div className="form-desc">
-        <textarea placeholder="Post Description" {...register('description')} />
+      <div>
+        <textarea
+          className="form-desc"
+          placeholder="Post Description"
+          {...register('description')}
+        />
       </div>
       <p style={{ color: 'red' }}>{errors.description?.message}</p>
-      <div className="form-submit">
-        <input type="submit" />
+      <div>
+        <input className="form-submit" type="submit" />
       </div>
     </form>
   );
