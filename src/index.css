@@ -132,6 +132,33 @@ div.logout-btn {
 }
 /* end of post */
 
+/* start of create post */
+form.create-post {
+  text-align: center;
+}
+
+form div {
+  padding: 20px 0;
+}
+
+.form-title {
+  height: 30px;
+  padding-left: 4px;
+  min-width: 420px;
+}
+.form-desc {
+  height: 50px;
+  width: 420px;
+  padding-left: 4px;
+}
+
+.form-submit {
+  min-width: 100px;
+  min-height: 40px;
+  font-size: 22px;
+}
+/* end of create post */
+
 button {
   background-color: var(--cream);
   border: none;
